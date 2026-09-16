@@ -9,11 +9,14 @@ Exit code 0 if every row matches the spec table; 1 otherwise.
 from __future__ import print_function
 
 import json
+import os
 import sys
 import urllib.error
 import urllib.request
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from threading import Event, Thread
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import circuitbreaker
 from circuitbreaker import (
