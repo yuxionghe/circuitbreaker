@@ -369,8 +369,8 @@ def circuit(failure_threshold=None,
             expected_exception=None,
             name=None,
             fallback_function=None,
-            success_threshold=None,
-            cls=CircuitBreaker):
+            cls=CircuitBreaker,
+            success_threshold=None):
     # if the decorator is used without parameters, the
     # wrapped function is provided as first argument
     if callable(failure_threshold):

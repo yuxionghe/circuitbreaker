@@ -159,6 +159,16 @@ def test_circuit_decorator_with_args():
     assert breaker._fallback_function == function_fallback
 
 
+def test_circuit_decorator_preserves_positional_cls():
+    class CustomBreaker(CircuitBreaker):
+        pass
+
+    breaker = circuit(10, 20, KeyError, 'foobar', None, CustomBreaker)
+
+    assert isinstance(breaker, CustomBreaker)
+    assert breaker._success_threshold == 1
+
+
 def test_breaker_expected_exception_is_predicate():
     def is_four_foo(thrown_type, thrown_value):
         return thrown_value.val == 4
